@@ -49,19 +49,19 @@ const duplicatedTechs = Array(5).fill(technologies).flat();
 
 export const TechStack = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-xl py-12 border-y border-slate-100/50">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm sm:backdrop-blur-xl py-12 border-y border-slate-100/50">
       {/* Masques dégradés pour effet fade premium */}
       <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-32 bg-gradient-to-r from-white via-white/80 to-transparent" />
       <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-32 bg-gradient-to-l from-white via-white/80 to-transparent" />
 
       {/* Container du marquee avec pause au hover */}
-      <div className="flex animate-scroll hover:[animation-play-state:paused]">
+      <div className="flex animate-scroll hover:[animation-play-state:paused] will-change-transform">
         {duplicatedTechs.map((tech, index) => {
           const IconComponent = tech.Icon;
           return (
             <motion.div
               key={`tech-${index}`}
-              className="mx-3 flex shrink-0 items-center gap-2.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 shadow-sm transition-all duration-300"
+              className="mx-3 flex shrink-0 items-center gap-2.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 shadow-sm transition-all duration-300 will-change-transform"
               whileHover={{
                 scale: 1.15,
                 y: -4,
