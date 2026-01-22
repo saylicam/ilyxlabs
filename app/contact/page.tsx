@@ -112,7 +112,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="tel:+33600000000"
+                  href="tel:+32486696722"
                   className="group rounded-2xl border border-white/50 bg-white/40 p-5 shadow-xl shadow-blue-900/10 backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/15"
                 >
                   <div className="flex items-start gap-4">
@@ -124,7 +124,7 @@ export default function ContactPage() {
                         Téléphone
                       </p>
                       <p className="mt-1 text-base font-semibold text-slate-900">
-                        +33 6 00 00 00 00
+                        +32 486 69 67 22
                       </p>
                       <p className="mt-1 text-sm text-slate-600">
                         Appel rapide, sans pression
@@ -136,17 +136,17 @@ export default function ContactPage() {
                 <div className="rounded-2xl border border-white/50 bg-white/40 p-5 shadow-xl shadow-blue-900/10 backdrop-blur-xl sm:col-span-2">
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/50 backdrop-blur-md">
-                      <MapPin className="h-5 w-5 text-slate-700" />
+                      <MapPin className="h-5 w-5 text-cyan-600" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                         Localisation
                       </p>
                       <p className="mt-1 text-base font-semibold text-slate-900">
-                        France — Remote & présentiel selon projet
+                        Belgique — Remote & Présentiel
                       </p>
                       <p className="mt-1 text-sm text-slate-600">
-                        Intervention nationale (PME, startups, cabinets, cliniques)
+                        Disponibilité internationale.
                       </p>
                     </div>
                   </div>
@@ -162,12 +162,11 @@ export default function ContactPage() {
               <div className="rounded-3xl border border-white/50 bg-white/40 p-6 shadow-xl shadow-blue-900/10 backdrop-blur-xl">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">
+                    <p className="text-base font-semibold text-slate-900">
                       Pas envie d&apos;écrire ?
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                      Réservez un appel découverte de 15 minutes et on clarifie
-                      votre besoin en direct.
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      Bloquez 15 minutes dans mon agenda. C&apos;est gratuit et sans engagement.
                     </p>
                   </div>
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/50 backdrop-blur-md">
@@ -175,11 +174,13 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <a
-                  href="mailto:contact@ilyxlabs.com?subject=Appel%20d%C3%A9couverte%2015%20min%20%E2%80%94%20Ilyx%20Labs"
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300/70 bg-white/30 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition-all hover:bg-white/50 hover:shadow-lg active:scale-95"
+                  href="https://cal.com/ton-pseudo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white/50 px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur-sm transition-all hover:border-blue-400 hover:bg-white hover:shadow-lg hover:shadow-blue-500/20 active:scale-95"
                 >
-                  Réserver un appel découverte (15 min)
-                  <ArrowRight className="h-4 w-4" />
+                  <Calendar className="h-4 w-4" />
+                  Réserver un appel (15 min)
                 </a>
               </div>
             </motion.div>

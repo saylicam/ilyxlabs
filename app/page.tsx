@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { FadeIn } from "@/components/FadeIn";
+import { TechStack } from "@/components/TechStack";
 import { motion } from "framer-motion";
 import {
   Zap,
@@ -16,9 +19,12 @@ import {
   Search,
   Target,
   Sparkles,
+  X,
 } from "lucide-react";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div className="relative flex w-full flex-col">
       {/* Fond Aurora fixe global - Derrière tout le site */}
@@ -26,6 +32,9 @@ export default function Home() {
 
       {/* HERO plein écran et pleine largeur */}
       <HeroSection />
+
+      {/* Bande défilante Technologies */}
+      <TechStack />
 
       {/* Contenu principal : chaque section occupe toute la largeur + min-h-screen */}
       <main className="relative w-full overflow-hidden">
@@ -137,7 +146,8 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
               {/* Carte 1 - Deep Glass */}
               <FadeIn delay={0.1}>
-                <motion.div
+                <Link
+                  href="/solutions"
                   className="group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/40 bg-white/50 p-8 shadow-xl shadow-blue-900/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-blue-500/20 sm:p-10"
                 >
                   {/* Icône néon dans box carrée arrondie */}
@@ -173,12 +183,13 @@ export default function Home() {
                       <span>Intégration de formulaires, blog, réservation, etc.</span>
                     </li>
                   </ul>
-                </motion.div>
+                </Link>
               </FadeIn>
 
               {/* Carte 2 - Monolithe Dark Mode */}
               <FadeIn delay={0.2}>
-                <motion.div
+                <Link
+                  href="/solutions"
                   className="group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-blue-500/30 bg-slate-950 p-8 text-slate-50 shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300 hover:-translate-y-2 hover:shadow-blue-500/40 sm:p-10"
                 >
                   {/* Glow interne subtil */}
@@ -217,12 +228,13 @@ export default function Home() {
                       <span>Guidelines pour vos futures communications.</span>
                     </li>
                   </ul>
-                </motion.div>
+                </Link>
               </FadeIn>
 
               {/* Carte 3 - Deep Glass */}
               <FadeIn delay={0.3}>
-                <motion.div
+                <Link
+                  href="/solutions"
                   className="group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-white/40 bg-white/50 p-8 shadow-xl shadow-blue-900/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-blue-500/20 sm:p-10"
                 >
                   {/* Icône néon dans box carrée arrondie */}
@@ -258,7 +270,7 @@ export default function Home() {
                       <span>Suivi des résultats et recommandations d&apos;actions.</span>
                     </li>
                   </ul>
-                </motion.div>
+                </Link>
               </FadeIn>
             </div>
           </div>
@@ -404,11 +416,17 @@ export default function Home() {
             </FadeIn>
 
             {/* Grille de cartes premium */}
-            <div className="grid gap-8 md:grid-cols-3 lg:gap-10">
+            <div className="grid gap-6 pt-20 md:grid-cols-3 md:gap-5 lg:gap-6 lg:pt-24">
               {/* Offre Essentiel */}
               <FadeIn delay={0.1}>
                 <motion.div
-                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/40 bg-white/50 p-8 shadow-xl shadow-blue-900/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-3 hover:border-cyan-500/60 hover:shadow-2xl hover:shadow-cyan-500/25 sm:p-10"
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => router.push("/tarifs")}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") router.push("/tarifs");
+                  }}
+                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/40 bg-white/60 p-8 opacity-95 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-3 hover:border-cyan-500/60 hover:opacity-100 hover:shadow-2xl hover:shadow-cyan-500/25 md:scale-[0.97] sm:p-10"
                 >
                   {/* Glow background */}
                   <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-cyan-400/20 blur-3xl transition-all duration-300 group-hover:bg-cyan-400/40" />
@@ -429,12 +447,22 @@ export default function Home() {
                   </div>
 
                   {/* Prix */}
-                  <div className="relative mb-6">
-                    <p className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                  <div className="relative mb-10 space-y-1">
+                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+                      À partir de
+                    </p>
+                    <p className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
                       290€
                     </p>
-                    <p className="mt-1 text-sm font-medium text-slate-500">
-                      (setup) + <span className="text-slate-900">79€/mois</span>
+                    <p className="text-xs uppercase tracking-[0.1em] text-slate-400">
+                      setup (one-shot)
+                    </p>
+                    <p className="pt-2 text-sm font-normal text-slate-400">
+                      + 79€ / mois (Hébergement &amp; Maintenance)
+                    </p>
+                    <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-emerald-50/80 px-3 py-1.5 text-xs font-medium text-emerald-700 backdrop-blur-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      Livré en 7 jours
                     </p>
                   </div>
 
@@ -447,20 +475,40 @@ export default function Home() {
                   {/* Liste avec checkmarks */}
                   <ul className="relative mt-auto space-y-3 text-sm text-slate-600">
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
                       <span>Site vitrine jusqu&apos;à 5 pages.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                      <span>SEO basique (structure &amp; balisage propres).</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Design sur base de Template.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Référencement technique de base.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
                       <span>Formulaire de contact &amp; appels à l&apos;action.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
                       <span>Hébergement &amp; maintenance technique.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 ring-1 ring-red-200 shadow-sm">
+                        <X className="h-4 w-4 text-red-500" />
+                      </span>
+                      <span className="text-slate-500">Rédaction des textes à votre charge.</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -468,20 +516,25 @@ export default function Home() {
 
               {/* Offre Business (POPULAIRE) */}
               <FadeIn delay={0.2}>
-                <motion.div
-                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-blue-500/40 bg-slate-950 p-8 text-slate-50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] ring-1 ring-blue-500/50 transition-all duration-300 hover:-translate-y-3 hover:border-blue-400/80 hover:shadow-[0_30px_80px_-24px] hover:shadow-blue-500/60 sm:p-10 md:translate-y-[-8px]"
-                >
-                  {/* Glow interne intensifié */}
-                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-600/30 to-violet-600/30 blur-2xl" />
-                  <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-500/50 blur-3xl transition-all duration-300 group-hover:bg-blue-500/70" />
-                  
-                  {/* Badge Populaire */}
-                  <div className="absolute right-6 top-6 z-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-blue-500/60">
-                    Populaire
+                <div className="relative">
+                  <div className="absolute -top-5 left-1/2 z-30 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-violet-500 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-white shadow-2xl shadow-blue-600/50 ring-1 ring-white/20">
+                    Meilleur ROI
                   </div>
+                  <motion.div
+                    role="link"
+                    tabIndex={0}
+                    onClick={() => router.push("/tarifs")}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") router.push("/tarifs");
+                    }}
+                    className="group relative z-10 flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-blue-400/50 bg-slate-950 p-8 text-slate-50 shadow-2xl shadow-blue-600/40 ring-1 ring-blue-400/50 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_35px_90px_-24px] hover:shadow-blue-600/55 sm:p-10 md:scale-110"
+                  >
+                    {/* Glow interne intensifié */}
+                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-600/30 to-violet-600/30 blur-2xl" />
+                    <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-500/50 blur-3xl transition-all duration-300 group-hover:bg-blue-500/70" />
 
-                  {/* Header avec icône */}
-                  <div className="relative mb-6 mt-2">
+                    {/* Header avec icône */}
+                    <div className="relative mb-6 mt-6">
                     <div className="mb-4 flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 shadow-xl shadow-blue-500/60">
                         <Shield className="h-6 w-6 text-white" />
@@ -496,17 +549,23 @@ export default function Home() {
                   </div>
 
                   {/* Prix */}
-                  <div className="relative mb-6">
-                    <p className="text-3xl font-bold text-slate-50 sm:text-4xl">
+                  <div className="relative mb-10 space-y-1">
+                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-blue-100/60">
+                      À partir de
+                    </p>
+                    <p className="text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
                       1490€
                     </p>
-                    <p className="mt-1 text-sm font-medium text-blue-100/80">
-                      (setup) + <span className="text-slate-50">49€/mois</span>
+                    <p className="text-xs uppercase tracking-[0.1em] text-blue-100/50">
+                      setup (one-shot)
+                    </p>
+                    <p className="pt-2 text-sm font-normal text-blue-100/80">
+                      Puis 49€ / mois tout inclus
                     </p>
                   </div>
 
                   {/* Description */}
-                  <p className="relative mb-8 text-base leading-relaxed text-blue-100/90">
+                  <p className="relative mb-10 text-base leading-relaxed text-blue-100/90">
                     L&apos;offre idéale pour les entreprises qui veulent une
                     image haut de gamme et un site pensé pour convertir.
                   </p>
@@ -514,41 +573,63 @@ export default function Home() {
                   {/* Liste avec checkmarks */}
                   <ul className="relative mt-auto space-y-3 text-sm text-blue-50/95">
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                      <span>Design sur-mesure aligné sur votre positionnement.</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/15 ring-1 ring-cyan-400/30 shadow-sm shadow-cyan-500/25">
+                        <Check className="h-4 w-4 text-cyan-300" />
+                      </span>
+                      <span>Design 100% Sur-Mesure &amp; Unique.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                      <span>SEO avancé (structure, contenus, maillage interne).</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/15 ring-1 ring-cyan-400/30 shadow-sm shadow-cyan-500/25">
+                        <Check className="h-4 w-4 text-cyan-300" />
+                      </span>
+                      <span>Stratégie SEO Avancée &amp; Mots-clés.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/15 ring-1 ring-cyan-400/30 shadow-sm shadow-cyan-500/25">
+                        <Check className="h-4 w-4 text-cyan-300" />
+                      </span>
+                      <span>Rédaction Copywriting Incluse (On écrit pour vous).</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/15 ring-1 ring-cyan-400/30 shadow-sm shadow-cyan-500/25">
+                        <Check className="h-4 w-4 text-cyan-300" />
+                      </span>
                       <span>Module avis clients &amp; preuves sociales.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                      <span>Rédaction incluse des pages clés.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/15 ring-1 ring-cyan-400/30 shadow-sm shadow-cyan-500/25">
+                        <Check className="h-4 w-4 text-cyan-300" />
+                      </span>
                       <span>Optimisation continue &amp; petites évolutions.</span>
                     </li>
                   </ul>
 
                   {/* CTA */}
-                  <a
-                    href="#contact"
-                    className="relative mt-8 inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-bold text-slate-950 shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:bg-slate-100 hover:shadow-2xl active:scale-95"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      router.push("/contact");
+                    }}
+                    className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-white via-blue-50 to-white px-6 py-4 text-sm font-extrabold text-slate-950 shadow-2xl shadow-blue-600/40 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-600/55 active:scale-95 animate-text-shimmer bg-[length:300%_auto]"
                   >
                     Parler de l&apos;offre Business
-                  </a>
-                </motion.div>
+                  </button>
+                  </motion.div>
+                </div>
               </FadeIn>
 
-              {/* Offre Sur Devis */}
+              {/* Offre Custom App */}
               <FadeIn delay={0.3}>
                 <motion.div
-                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/40 bg-white/50 p-8 shadow-xl shadow-blue-900/5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-3 hover:border-violet-500/60 hover:shadow-2xl hover:shadow-violet-500/25 sm:p-10"
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => router.push("/tarifs")}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") router.push("/tarifs");
+                  }}
+                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/40 bg-white/60 p-8 opacity-95 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-3 hover:border-violet-500/60 hover:opacity-100 hover:shadow-2xl hover:shadow-violet-500/25 md:scale-[0.97] sm:p-10"
                 >
                   {/* Glow background */}
                   <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-violet-400/20 blur-3xl transition-all duration-300 group-hover:bg-violet-400/40" />
@@ -560,17 +641,20 @@ export default function Home() {
                         <Code className="h-6 w-6 text-white" />
                       </div>
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                        Pro / E-commerce
+                        SaaS / Outils Métiers
                       </p>
                     </div>
                     <h3 className="font-display text-2xl font-bold text-slate-900 sm:text-3xl">
-                      Sur devis
+                      Custom App
                     </h3>
                   </div>
 
                   {/* Prix */}
                   <div className="relative mb-6">
-                    <p className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      À partir de
+                    </p>
+                    <p className="mt-2 text-5xl font-bold tracking-tighter text-slate-900 sm:text-6xl">
                       Sur devis
                     </p>
                     <p className="mt-1 text-sm font-medium text-slate-500">
@@ -580,34 +664,46 @@ export default function Home() {
 
                   {/* Description */}
                   <p className="relative mb-8 text-base leading-relaxed text-slate-600">
-                    Pour les projets complexes, E-commerce ou fonctionnalités
-                    métiers spécifiques.
+                    Digitalisez vos processus internes avec un logiciel web dédié.
                   </p>
 
                   {/* Liste avec checkmarks */}
                   <ul className="relative mt-auto space-y-3 text-sm text-slate-600">
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-violet-500" />
-                      <span>Fonctionnalités avancées &amp; logiques métiers.</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Développement d&apos;Applications Web complexes (SaaS).</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-violet-500" />
-                      <span>Intégration API, CRM, paiement, réservation, etc.</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Dashboards Admin &amp; Gestion de données.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-violet-500" />
-                      <span>E-commerce, catalogues produits &amp; tunnels de vente.</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Espaces Membres sécurisés &amp; Rôles utilisateurs.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-violet-500" />
-                      <span>Accompagnement produit &amp; stratégie digitale.</span>
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Outils de Planning, Réservation ou Billetterie.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-400/25 shadow-sm shadow-emerald-500/20">
+                        <Check className="h-4 w-4 text-emerald-600" />
+                      </span>
+                      <span>Intégration API &amp; Automatisations métiers.</span>
                     </li>
                   </ul>
 
                   {/* Note */}
                   <p className="relative mt-8 rounded-xl bg-slate-50/80 px-4 py-3 text-xs leading-relaxed text-slate-500 backdrop-blur-sm">
-                    Nous définissons ensemble le périmètre précis, les
-                    priorités et la roadmap.
+                    Nous définissons ensemble le cahier des charges et la roadmap technique.
                   </p>
                 </motion.div>
               </FadeIn>

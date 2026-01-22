@@ -47,7 +47,7 @@ export default function TarifsPage() {
     {
       question: "Combien de temps prend la création d'un site ?",
       answer:
-        "Essentiel : 2-3 semaines. Business : 4-6 semaines (selon la complexité du design sur-mesure). Sur devis : délai défini selon le périmètre précis du projet.",
+        "Essentiel : ⚡ Livré en 7 jours. Business : 3-5 semaines (selon la complexité du design sur-mesure). Sur devis : délai défini selon le périmètre précis du projet.",
     },
   ];
 
@@ -72,7 +72,7 @@ export default function TarifsPage() {
           </FadeIn>
 
           {/* Grille de cartes - Visible immédiatement */}
-          <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+          <div className="grid gap-6 pt-20 md:grid-cols-3 lg:gap-8 lg:pt-24">
             {/* Offre Essentiel */}
             <FadeIn delay={0.1}>
               <motion.div
@@ -108,7 +108,7 @@ export default function TarifsPage() {
                   <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
                     <div className="flex items-center gap-1.5">
                       <Clock className="h-3.5 w-3.5" />
-                      <span>2-3 semaines</span>
+                      <span>⚡ Livré en 7 jours</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Headphones className="h-3.5 w-3.5" />
@@ -128,27 +128,27 @@ export default function TarifsPage() {
                 <ul className="relative mt-auto space-y-3 text-sm text-slate-600">
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>Site vitrine jusqu&apos;à 5 pages optimisées.</span>
+                    <span>Site vitrine sur base de Template.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>SEO basique (structure &amp; balisage propres).</span>
+                    <span>Hébergement haute performance inclus.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>Formulaire de contact &amp; appels à l&apos;action.</span>
+                    <span>Sécurisé &amp; Rapide.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>Hébergement Vercel &amp; maintenance technique.</span>
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 ring-1 ring-red-200">
+                      <X className="h-4 w-4 text-red-500" />
+                    </span>
+                    <span className="text-slate-500">Textes &amp; Images à fournir par vous.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>Mises à jour de sécurité automatiques.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-                    <span>Responsive design (Mobile, Tablette, Desktop).</span>
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 ring-1 ring-red-200">
+                      <X className="h-4 w-4 text-red-500" />
+                    </span>
+                    <span className="text-slate-500">Pas de personnalisation avancée.</span>
                   </li>
                 </ul>
 
@@ -176,17 +176,17 @@ export default function TarifsPage() {
 
             {/* Offre Business (POPULAIRE) */}
             <FadeIn delay={0.2}>
-              <motion.div
-                className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-blue-500/40 bg-slate-950 p-8 text-slate-50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] ring-1 ring-blue-500/50 transition-all duration-300 hover:-translate-y-3 hover:border-blue-400/80 hover:shadow-[0_30px_80px_-24px] hover:shadow-blue-500/60 sm:p-10 md:translate-y-[-8px]"
-              >
-                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-600/30 to-violet-600/30 blur-2xl" />
-                <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-500/50 blur-3xl transition-all duration-300 group-hover:bg-blue-500/70" />
-                
-                <div className="absolute right-6 top-6 z-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-blue-500/60">
+              <div className="relative">
+                <div className="absolute -top-5 left-1/2 z-30 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-violet-500 px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-white shadow-2xl shadow-blue-600/50 ring-1 ring-white/20">
                   Populaire
                 </div>
+                <motion.div
+                  className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-blue-500/40 bg-slate-950 p-8 text-slate-50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)] ring-1 ring-blue-500/50 transition-all duration-300 hover:-translate-y-3 hover:border-blue-400/80 hover:shadow-[0_30px_80px_-24px] hover:shadow-blue-500/60 sm:p-10 md:translate-y-[-8px]"
+                >
+                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-600/30 to-violet-600/30 blur-2xl" />
+                  <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-500/50 blur-3xl transition-all duration-300 group-hover:bg-blue-500/70" />
 
-                <div className="relative mb-6 mt-2">
+                  <div className="relative mb-6 mt-6">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 shadow-xl shadow-blue-500/60">
                       <Shield className="h-6 w-6 text-white" />
@@ -214,7 +214,7 @@ export default function TarifsPage() {
                   <div className="mt-3 flex items-center gap-4 text-xs text-blue-100/80">
                     <div className="flex items-center gap-1.5">
                       <Clock className="h-3.5 w-3.5" />
-                      <span>4-6 semaines</span>
+                      <span>3-5 semaines</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Headphones className="h-3.5 w-3.5" />
@@ -238,11 +238,19 @@ export default function TarifsPage() {
                 <ul className="relative mt-auto space-y-3 text-sm text-blue-50/95">
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                    <span>Design sur-mesure aligné sur votre positionnement.</span>
+                    <span>Design 100% Unique &amp; Sur-mesure.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                    <span>SEO avancé (structure, contenus, maillage interne).</span>
+                    <span><strong className="font-bold">Rédaction Copywriting INCLUSE</strong> (On écrit pour vous).</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                    <span>Stratégie SEO Avancée &amp; Mots-clés.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                    <span>Intégration CRM &amp; Automatisations.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
@@ -250,19 +258,7 @@ export default function TarifsPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                    <span>Rédaction incluse des pages clés (5-7 pages).</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
                     <span>Optimisation continue &amp; petites évolutions.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                    <span>Formation à la gestion du contenu incluse.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                    <span>Analytics &amp; rapports de performance mensuels.</span>
                   </li>
                 </ul>
 
@@ -302,7 +298,8 @@ export default function TarifsPage() {
                   Parler de l&apos;offre Business
                   <ArrowRight className="h-4 w-4" />
                 </a>
-              </motion.div>
+                </motion.div>
+              </div>
             </FadeIn>
 
             {/* Offre Sur Devis */}
